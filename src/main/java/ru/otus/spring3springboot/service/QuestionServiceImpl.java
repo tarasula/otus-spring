@@ -2,10 +2,11 @@ package ru.otus.spring3springboot.service;
 
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import ru.otus.spring3springboot.config.LocalePropertiesConfig;
 import ru.otus.spring3springboot.dao.QuestionDao;
 import ru.otus.spring3springboot.model.Question;
+import ru.otus.spring3springboot.utils.QuestionUtils;
 
 import java.util.List;
 
@@ -14,12 +15,11 @@ import java.util.List;
 public class QuestionServiceImpl implements QuestionService {
 
     private final QuestionDao questionDao;
-
-    @Value("${question.file.name}")
-    private String fileName;
+    private final LocalePropertiesConfig localePropertiesConfig;
 
     @Override
-    public List<Question> getQuestionFromCsvFile() {
-        return questionDao.readCsvFile(fileName);
+    public List<Question> getQuestionFromCsvFile(String fileName) {
+        return questionDao.readCsvFile(
+                localePropertiesConfig.getFilenames().get(QuestionUtils.getLocale()));
     }
 }

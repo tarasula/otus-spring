@@ -1,8 +1,3 @@
-spring:
-  messages:
-    basename: message
-
-
 locale:
   data:
     ru: questions.csv
@@ -11,4 +6,4 @@ locale:
 
 question:
   file:
-    name: 1question.csv
+    name: questions.csv
