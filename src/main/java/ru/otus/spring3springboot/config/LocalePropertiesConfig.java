@@ -13,7 +13,7 @@ public class LocalePropertiesConfig {
 
     private Map<String, String> data;
 
-    public Map<String, String> getFilenames() {
+    public Map<String, String> getFileNames() {
         return data;
     }
 }

@@ -16,10 +16,11 @@ public class QuestionServiceImpl implements QuestionService {
 
     private final QuestionDao questionDao;
     private final LocalePropertiesConfig localePropertiesConfig;
+    private final QuestionUtils questionUtils;
 
     @Override
-    public List<Question> getQuestionFromCsvFile(String fileName) {
+    public List<Question> getQuestionFromCsvFile() {
         return questionDao.readCsvFile(
-                localePropertiesConfig.getFilenames().get(QuestionUtils.getLocale()));
+                localePropertiesConfig.getFileNames().get(questionUtils.getLocale()));
     }
 }

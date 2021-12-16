@@ -1,6 +1,6 @@
 package ru.otus.spring3springboot.service;
 
-import org.springframework.beans.factory.annotation.Value;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.otus.spring3springboot.model.Question;
 import ru.otus.spring3springboot.utils.QuestionUtils;
@@ -9,16 +9,20 @@ import java.util.List;
 import java.util.Scanner;
 
 @Service
-public class UserInteractiveServiceImpl implements UserInteractiveService{
+@RequiredArgsConstructor
+public class UserInteractiveServiceImpl implements UserInteractiveService {
+
+    private final MessageSourceService messageSourceService;
+    private final QuestionUtils questionUtils;
 
     @Override
     public void printQuestion(List<Question> questionList) {
 
-        Scanner in = QuestionUtils.getScanner();
+        Scanner in = questionUtils.getScanner();
 
-        System.out.println(QuestionUtils.getSourceMessage("hello.question") + "\n");
+        System.out.println(messageSourceService.getSourceMessage("hello.question") + "\n");
         in.nextLine();
-        System.out.println(QuestionUtils.getSourceMessage("user.info") + "\n");
+        System.out.println(messageSourceService.getSourceMessage("user.info") + "\n");
         in.nextLine();
 
         questionList.forEach(question -> {
@@ -26,7 +30,7 @@ public class UserInteractiveServiceImpl implements UserInteractiveService{
             in.nextLine();
         });
 
-        System.out.println(QuestionUtils.getSourceMessage("user.end.survey.info"));
+        System.out.println(messageSourceService.getSourceMessage("user.end.survey.info"));
         in.close();
     }
 }
