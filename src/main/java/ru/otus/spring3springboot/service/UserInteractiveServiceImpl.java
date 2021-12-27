@@ -1,6 +1,9 @@
 package ru.otus.spring3springboot.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.shell.standard.ShellComponent;
+import org.springframework.shell.standard.ShellMethod;
+import org.springframework.shell.standard.ShellOption;
 import org.springframework.stereotype.Service;
 import ru.otus.spring3springboot.model.Question;
 import ru.otus.spring3springboot.utils.QuestionUtils;
@@ -31,6 +34,6 @@ public class UserInteractiveServiceImpl implements UserInteractiveService {
         });
 
         System.out.println(messageSourceService.getSourceMessage("user.end.survey.info"));
-        in.close();
+//        in.close();
     }
 }
