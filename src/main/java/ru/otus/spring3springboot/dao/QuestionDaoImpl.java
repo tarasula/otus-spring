@@ -17,8 +17,7 @@ public class QuestionDaoImpl implements QuestionDao {
 
     @Override
     public List<Question> readCsvFile(String fileName) {
-        var classLoader = getClass().getClassLoader();
-        var inputStream = classLoader.getResourceAsStream(fileName);
+        var inputStream = getClass().getClassLoader().getResourceAsStream(fileName);
 
         try (var csvReader = new CSVReader(new InputStreamReader(Objects.requireNonNull(inputStream)))) {
             var questionList = new ArrayList<Question>();

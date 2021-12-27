@@ -1,7 +1,7 @@
 spring:
-  messages:
-    basename: message
-
+  shell:
+    interactive:
+      enabled: false
 
 locale:
   data:
@@ -11,4 +11,4 @@ locale:
 
 question:
   file:
-    name: 1question.csv
+    name: questions.csv
